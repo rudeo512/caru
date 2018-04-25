@@ -1,0 +1,43 @@
+package com.caru.caru.webservice.domain;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+
+import org.springframework.data.annotation.Id;
+
+import lombok.AccessLevel;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+
+/**
+ * Posts
+ *
+ * @author kyungdae.cho
+ * @version 1.0.0
+ * @since 2018. 04. 25.
+ */
+
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
+@Getter
+@Entity
+public class Posts {
+	@Id
+	@GeneratedValue
+	private Long id;
+
+	@Column(length = 500, nullable = false)
+	private String title;
+
+	@Column(columnDefinition = "TEXT", nullable = false)
+	private String content;
+	private String author;
+
+	@Builder
+	public Posts(String title, String content, String author) {
+		this.title = title;
+		this.content = content;
+		this.author = author;
+	}
+}

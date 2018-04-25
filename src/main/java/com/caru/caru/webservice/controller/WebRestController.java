@@ -1,4 +1,4 @@
-package com.caru.caru.controller;
+package com.caru.caru.webservice.controller;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
