@@ -3,8 +3,7 @@ package com.caru.caru.webservice.domain;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
-
-import org.springframework.data.annotation.Id;
+import javax.persistence.Id;
 
 import lombok.AccessLevel;
 import lombok.Builder;
@@ -22,7 +21,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Getter
 @Entity
-public class Posts {
+public class Posts extends BaseTimeEntity {
 	@Id
 	@GeneratedValue
 	private Long id;

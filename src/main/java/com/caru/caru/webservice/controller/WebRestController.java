@@ -1,7 +1,16 @@
 package com.caru.caru.webservice.controller;
 
+import java.util.List;
+
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.caru.caru.webservice.domain.Posts;
+import com.caru.caru.webservice.domain.PostsRepository;
+import com.caru.caru.webservice.domain.PostsSaveRequestDto;
+import lombok.AllArgsConstructor;
 
 /**
  * WebRestController
@@ -11,9 +20,23 @@ import org.springframework.web.bind.annotation.RestController;
  * @since 2018. 04. 25.
  */
 @RestController
+@AllArgsConstructor
 public class WebRestController {
+	private PostsRepository postsRepository;
+
 	@GetMapping("/hello")
 	public String hello() {
 		return "HelloWorld";
+	}
+
+	@PostMapping("/posts")
+	public List<Posts> savePosts(@RequestBody PostsSaveRequestDto dto) {
+		postsRepository.save(dto.toEntity());
+		return postsRepository.findAll();
+	}
+
+	@GetMapping("/posts")
+	public List<Posts> getPosts() {
+		return postsRepository.findAll();
 	}
 }
