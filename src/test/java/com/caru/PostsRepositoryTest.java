@@ -1,4 +1,4 @@
-package com.caru.caru;
+package com.caru;
 
 import static org.hamcrest.CoreMatchers.*;
 import static org.junit.Assert.*;
@@ -13,8 +13,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import com.caru.caru.webservice.domain.Posts;
-import com.caru.caru.webservice.domain.PostsRepository;
+import com.caru.webservice.domain.Posts;
+import com.caru.webservice.domain.PostsRepository;
 
 /**
  * PostsRepositoryTest

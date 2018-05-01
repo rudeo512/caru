@@ -1,4 +1,4 @@
-package com.caru.caru;
+package com.caru;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

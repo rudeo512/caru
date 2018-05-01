@@ -1,4 +1,4 @@
-package com.caru.caru.webservice.domain;
+package com.caru.webservice.domain;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

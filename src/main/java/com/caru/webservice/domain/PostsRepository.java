@@ -1,4 +1,4 @@
-package com.caru.caru.webservice.domain;
+package com.caru.webservice.domain;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 

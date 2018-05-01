@@ -1,4 +1,4 @@
-package com.caru.caru.webservice.controller;
+package com.caru.webservice.controller;
 
 import java.util.List;
 
@@ -7,9 +7,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.caru.caru.webservice.domain.Posts;
-import com.caru.caru.webservice.domain.PostsRepository;
-import com.caru.caru.webservice.domain.PostsSaveRequestDto;
+import com.caru.webservice.domain.Posts;
+import com.caru.webservice.domain.PostsRepository;
+import com.caru.webservice.domain.PostsSaveRequestDto;
 import lombok.AllArgsConstructor;
 
 /**

@@ -5,9 +5,13 @@ buildscript {
     repositories {
         mavenLocal()
         mavenCentral()
+        maven {
+            url "https://plugins.gradle.org/m2/"
+        }
     }
     dependencies {
         classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+        classpath('gradle.plugin.com.palantir.gradle.docker:gradle-docker:0.19.2')
     }
 }
 
@@ -15,6 +19,7 @@ apply plugin: 'java'
 apply plugin: 'idea'
 apply plugin: 'org.springframework.boot'
 apply plugin: 'io.spring.dependency-management'
+apply plugin: 'com.palantir.docker'
 
 group = 'com.caru'
 version = '0.0.1-SNAPSHOT'
@@ -25,6 +30,10 @@ repositories {
     mavenLocal()
 }
 
+bootJar {
+    baseName = 'com.caru'
+    version = '0.0.1-SNAPSHOT'
+}
 
 ext {
     springCloudVersion = 'Finchley.M9'
@@ -34,8 +43,19 @@ dependencies {
     compile('org.springframework.boot:spring-boot-starter-actuator')
     compile('org.springframework.boot:spring-boot-starter-web')
     compile('org.springframework.boot:spring-boot-starter-data-jpa')
+    // https://mvnrepository.com/artifact/javax.xml.bind/jaxb-api
+    compile group: 'javax.xml.bind', name: 'jaxb-api', version: '2.3.0'
 
     runtime('com.h2database:h2')
     compileOnly('org.projectlombok:lombok')
     testCompile('org.springframework.boot:spring-boot-starter-test')
+}
+
+docker {
+    dependsOn build
+    name "${project.group}/${bootJar.baseName}"
+    dockerfile file('src/main/docker/Dockerfile')
+    files bootJar.archivePath
+    buildArgs(['JAR_FILE': "${bootJar.archiveName}"])
+    noCache true
 }
