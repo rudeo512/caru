@@ -1,0 +1,21 @@
+apply plugin: 'com.palantir.docker'
+
+bootJar {
+    baseName = 'web'
+    version = '0.0.1-SNAPSHOT'
+}
+
+docker {
+    dependsOn build
+    name "${project.group}/${bootJar.baseName}"
+    dockerfile file('src/main/docker/Dockerfile')
+    files bootJar.archivePath
+    buildArgs(['JAR_FILE': "${bootJar.archiveName}"])
+    noCache true
+}
+
+dependencies {
+    compile project(':core')
+    compile('org.springframework.boot:spring-boot-starter-web')
+    testCompile('org.springframework.boot:spring-boot-starter-test')
+}

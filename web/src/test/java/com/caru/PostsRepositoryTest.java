@@ -13,8 +13,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import com.caru.webservice.domain.Posts;
-import com.caru.webservice.domain.PostsRepository;
+import com.caru.core.domain.Posts;
+import com.caru.core.domain.PostsRepository;
 
 /**
  * PostsRepositoryTest
