@@ -1,10 +1,11 @@
 package com.caru.core.service;
 
+import java.util.List;
+
+import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.caru.core.domain.PostsRepository;
-import com.caru.core.domain.PostsSaveRequestDto;
 import lombok.AllArgsConstructor;
 
 /**
@@ -17,11 +18,16 @@ import lombok.AllArgsConstructor;
 
 @AllArgsConstructor
 @Service
+@EnableJpaAuditing
 public class PostsService {
 	private PostsRepository postsRepository;
 
 	@Transactional
 	public Long save(PostsSaveRequestDto dto) {
 		return postsRepository.save(dto.toEntity()).getId();
+	}
+
+	public List<Posts> findAll() {
+		return postsRepository.findAll();
 	}
 }

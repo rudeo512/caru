@@ -7,9 +7,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.caru.core.domain.Posts;
-import com.caru.core.domain.PostsRepository;
-import com.caru.core.domain.PostsSaveRequestDto;
+import com.caru.core.service.Posts;
+import com.caru.core.service.PostsSaveRequestDto;
+import com.caru.core.service.PostsService;
 import lombok.AllArgsConstructor;
 
 /**
@@ -22,7 +22,7 @@ import lombok.AllArgsConstructor;
 @RestController
 @AllArgsConstructor
 public class WebRestController {
-	private PostsRepository postsRepository;
+	private PostsService postsService;
 
 	@GetMapping("/hello")
 	public String hello() {
@@ -30,13 +30,12 @@ public class WebRestController {
 	}
 
 	@PostMapping("/posts")
-	public List<Posts> savePosts(@RequestBody PostsSaveRequestDto dto) {
-		postsRepository.save(dto.toEntity());
-		return postsRepository.findAll();
+	public Long savePosts(@RequestBody PostsSaveRequestDto dto) {
+		return postsService.save(dto);
 	}
 
 	@GetMapping("/posts")
 	public List<Posts> getPosts() {
-		return postsRepository.findAll();
+		return postsService.findAll();
 	}
 }
