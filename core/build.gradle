@@ -1,3 +1,29 @@
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+}
+
+plugins { id "io.spring.dependency-management" version "1.0.5.RELEASE" }
+
+ext { springBootVersion = '2.0.1.RELEASE' }
+
+apply plugin: 'java'
+apply plugin: 'idea'
+
+jar {
+    baseName = "caru-core"
+    version = '0.0.1'
+}
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+    mavenLocal()
+}
+
 dependencies {
     compile('org.springframework.boot:spring-boot-starter-actuator')
     compile('org.springframework.boot:spring-boot-starter-data-jpa')
@@ -6,12 +32,9 @@ dependencies {
 
     runtime('com.h2database:h2')
     testCompile('org.springframework.boot:spring-boot-starter-test')
+    compileOnly('org.projectlombok:lombok')
 }
 
-bootJar {
-    enabled = false
-}
-
-jar {
-    enabled = true
+dependencyManagement {
+    imports { mavenBom("org.springframework.boot:spring-boot-dependencies:${springBootVersion}") }
 }
