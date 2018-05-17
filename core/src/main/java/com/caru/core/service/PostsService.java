@@ -1,6 +1,7 @@
 package com.caru.core.service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 import org.springframework.stereotype.Service;
@@ -30,4 +31,13 @@ public class PostsService {
 	public List<Posts> findAll() {
 		return postsRepository.findAll();
 	}
+
+
+	@Transactional(readOnly = true)
+	public List<PostsMainResponseDto> findAllDesc() {
+		return postsRepository.findAllDesc()
+			.map(PostsMainResponseDto::new)
+			.collect(Collectors.toList());
+	}
+
 }

@@ -4,7 +4,6 @@ import static org.hamcrest.CoreMatchers.*;
 import static org.junit.Assert.*;
 
 import java.time.LocalDateTime;
-import java.util.List;
 
 import org.junit.After;
 import org.junit.Test;
@@ -34,28 +33,28 @@ public class PostsRepositoryTest {
 	@Test
 	public void 게시글저장_불러오기() {
 		//given
-		postsRepository.save(Posts.builder().title("테스트 게시글").content("테스트 본문").author("jojoldu@gmail.com").build());
+		Posts posts = postsRepository.save(Posts.builder().title("테스트 게시글").content("테스트 본문").author("jojoldu@gmail.com").build());
+
 		// when
-		List<Posts> postsList = postsRepository.findAll();
+		Posts result = postsRepository.findById(posts.getId()).get();
+
 		// then
-		Posts posts = postsList.get(0);
-		assertThat(posts.getTitle(), is("테스트 게시글"));
-		assertThat(posts.getContent(), is("테스트 본문"));
+		assertThat(result.getTitle(), is("테스트 게시글"));
+		assertThat(result.getContent(), is("테스트 본문"));
 	}
 
 	@Test
 	public void BaseTimeEntity_등록() {
 		//given
 		LocalDateTime now = LocalDateTime.now();
-		postsRepository.save(Posts.builder().title("테스트 게시글").content("테스트 본문").author("jojoldu@gmail.com").build());
+		Posts posts = postsRepository.save(Posts.builder().title("테스트 게시글").content("테스트 본문").author("jojoldu@gmail.com").build());
 
-		//when
-		List<Posts> postsList = postsRepository.findAll();
+		// when
+		Posts result = postsRepository.findById(posts.getId()).get();
 
 		//then
-		Posts posts = postsList.get(0);
-		assertTrue(posts.getCreatedDate().isAfter(now));
-		assertTrue(posts.getModifiedDate().isAfter(now));
+		assertTrue(result.getCreatedDate().isAfter(now));
+		assertTrue(result.getModifiedDate().isAfter(now));
 	}
 }
 
