@@ -3,6 +3,8 @@ spring:
     active: local # 기본 환경 선택
 server:
   port: 8080
+banner:
+  location: banner.txt
 
 # local 환경
 ---
