@@ -1,15 +1,5 @@
 spring:
   profiles:
-    active: local # 기본 환경 선택
-server:
-  port: 8080
+    active: local
 banner:
   location: banner.txt
-
-# local 환경
----
-spring:
-  profiles: local
-  h2:
-    console:
-      enabled: true
