@@ -1,5 +1,3 @@
 spring:
   profiles:
-    active: local
-banner:
-  location: banner.txt
+    active: local # 기본 환경 선택

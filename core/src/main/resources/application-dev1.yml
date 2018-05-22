@@ -1,6 +1,0 @@
-spring:
-  profiles: dev1
-  jpa:
-    show-sql: true
-    hibernate:
-      ddl-auto: create-drop

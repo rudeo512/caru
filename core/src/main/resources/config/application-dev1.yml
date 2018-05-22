@@ -1,0 +1,9 @@
+spring:
+  profiles: dev1
+  datasource:
+    url: jdbc:mariadb://caru.cbh2d08z8fpk.ap-northeast-2.rds.amazonaws.com:3306/caru
+    username: rudeo512
+    password: rudeo512
+    driver-class-name: org.mariadb.jdbc.Driver
+  jpa:
+    show-sql: true

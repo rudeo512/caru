@@ -2,11 +2,11 @@ package com.caru.core.service;
 
 import static org.assertj.core.api.Assertions.*;
 
-import org.junit.After;
+import javax.transaction.Transactional;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
@@ -20,7 +20,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-@EnableAutoConfiguration
+@Transactional
 public class PostServiceTest {
 
 	@Autowired
@@ -28,11 +28,6 @@ public class PostServiceTest {
 
 	@Autowired
 	private PostsRepository postsRepository;
-
-	@After
-	public void cleanup() {
-		postsRepository.deleteAll();
-	}
 
 	@Test
 	public void Dto데이터가_posts테이블에_저장된다() {
