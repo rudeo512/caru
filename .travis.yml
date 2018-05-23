@@ -12,10 +12,10 @@ cache:
     - '$HOME/.m2/repository'
     - '$HOME/.gradle'
 
-script: "./gradlew clean :web:build -x test"
+script: "./gradlew clean build"
 
 after_success:
-  - ./gradlew jacocoTestReport coveralls
+  - ./gradlew jacocoRootReport coveralls
 
 before_deploy:
   - zip -r caru-web *
