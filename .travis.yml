@@ -15,7 +15,7 @@ cache:
 script: "./gradlew clean :web:build -x test"
 
 after_success:
- - ./gradlew jacocoTestReport coveralls
+  - ./gradlew jacocoTestReport coveralls
 
 before_deploy:
   - zip -r caru-web *
