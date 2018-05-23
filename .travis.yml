@@ -48,8 +48,5 @@ deploy:
       repo: rudeo512/caru
       branch: master
 
-# CI 실행 완료시 메일로 알람
 notifications:
-  email:
-    recipients:
-      - rudeo0512@gmail.com
+  webhooks: https://fathomless-fjord-24024.herokuapp.com/notify
