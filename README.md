@@ -1,0 +1,1 @@
+[![Build Status](https://travis-ci.org/rudeo512/caru.svg?branch=master)](https://travis-ci.org/rudeo512/caru)
