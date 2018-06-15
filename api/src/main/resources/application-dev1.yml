@@ -1,0 +1,4 @@
+spring:
+  profiles: dev1
+server:
+  port: 8081
