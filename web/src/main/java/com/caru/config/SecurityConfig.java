@@ -16,12 +16,14 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		http.authorizeRequests()
-			.antMatchers("/oauth_login")
+			.antMatchers("/login")
 			.permitAll()
 			.anyRequest()
 			.authenticated()
 			.and()
 			.oauth2Login()
-			.loginPage("/oauth_login");
+			.loginPage("/login")
+			.defaultSuccessUrl("/signup", true);
+
 	}
 }
