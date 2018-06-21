@@ -7,8 +7,11 @@ spring:
           google:
             client-id : "1055645389713-vib97n7vk3i5jn234t4rdp76msmpfur0.apps.googleusercontent.com"
             client-secret: "vBywVYB1_mw0nWGCvy-5KLWt"
+            redirect-uri-template: "https://local-caru.selective.me/login/oauth2/code/google"
           facebook:
             client-id : "374863489700576"
             client-secret: "e5e3d0b253fcb631e4852e8d697dee93"
+            redirect-uri-template: "https://local-caru.selective.me/login/oauth2/code/facebook"
+
 server:
-  port: 8081
+  port: 8080
